@@ -52,6 +52,7 @@ Offloading is implemented for the following STL algorithms:
 |`count` | |
 |`count_if` | |
 |`mismatch` | |
+|`equal` | |
 |`merge` | |
 |`shift_left` | |
 |`shift_right` | |
