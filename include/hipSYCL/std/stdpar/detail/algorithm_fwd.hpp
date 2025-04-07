@@ -207,6 +207,18 @@ template <class ForwardIt, class Compare>
 HIPSYCL_STDPAR_ENTRYPOINT
 ForwardIt max_element(hipsycl::stdpar::par_unseq, ForwardIt first,
                       ForwardIt last, Compare comp);
+
+template <class ForwardIt>
+HIPSYCL_STDPAR_ENTRYPOINT
+ForwardIt shift_left(hipsycl::stdpar::par_unseq,
+                ForwardIt first, ForwardIt last,
+                typename std::iterator_traits<ForwardIt>::difference_type n);
+
+template <class ForwardIt>
+HIPSYCL_STDPAR_ENTRYPOINT
+ForwardIt shift_right(hipsycl::stdpar::par_unseq,
+                ForwardIt first, ForwardIt last,
+                typename std::iterator_traits<ForwardIt>::difference_type n);
 ///////////////////////////// par policy /////////////////////////////
 
 template <class ForwardIt1, class ForwardIt2>
@@ -291,6 +303,18 @@ template <class ForwardIt, class Compare>
 HIPSYCL_STDPAR_ENTRYPOINT
 ForwardIt max_element(hipsycl::stdpar::par, ForwardIt first, ForwardIt last,
                       Compare comp);
+
+template <class ForwardIt>
+HIPSYCL_STDPAR_ENTRYPOINT
+ForwardIt shift_left(hipsycl::stdpar::par,
+                ForwardIt first, ForwardIt last,
+                typename std::iterator_traits<ForwardIt>::difference_type n);
+
+template <class ForwardIt>
+HIPSYCL_STDPAR_ENTRYPOINT
+ForwardIt shift_right(hipsycl::stdpar::par,
+                ForwardIt first, ForwardIt last,
+                typename std::iterator_traits<ForwardIt>::difference_type n);
 }
 
 #endif
