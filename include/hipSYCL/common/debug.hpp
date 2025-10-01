@@ -58,11 +58,12 @@ public:
 
   std::ostream &get_stream() const { return _output_stream; }
   int get_debug_level() const { return _debug_level; }
+  int get_isatty() const { return _isatty; }
 
 private:
 
   output_stream()
-  : _debug_level {HIPSYCL_DEBUG_LEVEL}, _output_stream{std::cout} {
+  : _debug_level {HIPSYCL_DEBUG_LEVEL}, _output_stream{std::cerr}, _isatty{isatty(fileno(stderr))} {
 #if !defined(HIPSYCL_COMPILER_COMPONENT) && !defined(HIPSYCL_TOOL_COMPONENT)
     _debug_level =
         rt::application::get_settings().get<rt::setting::debug_level>();
@@ -81,11 +82,6 @@ private:
       process_env(env);
     }
 #endif
-
-    _isatty = isatty(fileno(stdout)) && isatty(fileno(stderr));
-    if (!_isatty)
-      // define HIPSYCL_DEBUG_NOCOLOR
-      ;
   }
 
   int _debug_level;
